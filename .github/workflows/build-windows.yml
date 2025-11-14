@@ -27,9 +27,6 @@ jobs:
 
       - name: Install dependencies
         run: npm install
-        env:
-          # 加速 Electron 下載（如果需要可以取消註解）
-          # ELECTRON_MIRROR: https://npmmirror.com/mirrors/electron/
 
       - name: Build TypeScript
         run: npm run build
@@ -37,7 +34,6 @@ jobs:
       - name: Package application
         run: npm run package
         env:
-          # Windows 打包環境變數
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: List build outputs
