@@ -2,9 +2,11 @@
 
 此資料夾用於存放應用程式圖標。
 
-## 需要的圖標文件
+> **注意**: 圖標是可選的。目前構建配置已設置為使用 Electron 的預設圖標，應用程式可以正常構建和運行。
 
-為了完整打包應用程式，您需要提供以下圖標文件：
+## 可選的圖標文件
+
+如果您想要自定義應用圖標，可以提供以下文件：
 
 ### Windows
 - `icon.ico` - Windows 應用圖標
@@ -39,13 +41,30 @@ npm install -g electron-icon-builder
 electron-icon-builder --input=./icon.png --output=./assets
 ```
 
-## 臨時解決方案
+## 如何啟用自定義圖標
 
-如果您暫時沒有圖標，可以：
+創建好圖標文件後，需要更新 `package.json` 的 `build` 配置：
 
-1. 使用佔位符圖標（純色或簡單設計）
-2. 修改 `package.json` 中的 `build` 配置，移除 `icon` 欄位
-3. Electron Builder 會使用預設圖標
+```json
+{
+  "build": {
+    "win": {
+      "icon": "assets/icon.ico"
+    },
+    "nsis": {
+      "installerIcon": "assets/icon.ico",
+      "uninstallerIcon": "assets/icon.ico",
+      "installerHeaderIcon": "assets/icon.ico"
+    },
+    "mac": {
+      "icon": "assets/icon.icns"
+    },
+    "linux": {
+      "icon": "assets/icon.png"
+    }
+  }
+}
+```
 
 ## 圖標設計建議
 

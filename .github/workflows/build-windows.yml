@@ -24,13 +24,12 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-          cache: 'npm'
 
       - name: Install dependencies
-        run: npm ci
+        run: npm install
         env:
-          # 加速 Electron 下載
-          ELECTRON_MIRROR: https://npmmirror.com/mirrors/electron/
+          # 加速 Electron 下載（如果需要可以取消註解）
+          # ELECTRON_MIRROR: https://npmmirror.com/mirrors/electron/
 
       - name: Build TypeScript
         run: npm run build

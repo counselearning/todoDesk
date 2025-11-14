@@ -48,7 +48,6 @@
           "arch": ["x64"]
         }
       ],
-      "icon": "assets/icon.ico",
       "publisherName": "TodoDesk",
       "verifyUpdateCodeSignature": false
     },
@@ -56,21 +55,16 @@
       "oneClick": false,
       "allowToChangeInstallationDirectory": true,
       "allowElevation": true,
-      "installerIcon": "assets/icon.ico",
-      "uninstallerIcon": "assets/icon.ico",
-      "installerHeaderIcon": "assets/icon.ico",
       "createDesktopShortcut": true,
       "createStartMenuShortcut": true,
       "shortcutName": "TodoDesk"
     },
     "mac": {
       "target": ["dmg", "zip"],
-      "icon": "assets/icon.icns",
       "category": "public.app-category.productivity"
     },
     "linux": {
       "target": ["AppImage", "deb"],
-      "icon": "assets/icon.png",
       "category": "Utility"
     }
   }
