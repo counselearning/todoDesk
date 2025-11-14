@@ -86,13 +86,61 @@ npm run dev
 
 ## 📦 打包應用
 
-### 打包為可執行檔
+### 本地打包
+
+打包為可執行檔：
 
 ```bash
+# 打包所有平台
 npm run package
+
+# 只打包 Windows
+npm run package:win
+
+# 只打包 macOS
+npm run package:mac
+
+# 只打包 Linux
+npm run package:linux
 ```
 
 打包後的檔案會在 `build` 資料夾中。
+
+### GitHub Actions 自動構建
+
+本專案已配置 GitHub Actions 自動構建 Windows 11 版本。
+
+#### 自動觸發構建
+- 推送到 `main` 或 `claude/**` 分支
+- 創建 Pull Request
+- 創建版本標籤（如 `v1.0.0`）
+
+#### 手動觸發構建
+1. 前往 GitHub 倉庫的 **Actions** 標籤
+2. 選擇 **Build Windows 11** 工作流程
+3. 點擊 **Run workflow** 選擇分支並執行
+
+#### 下載構建產物
+1. 前往 **Actions** 標籤
+2. 選擇成功的構建
+3. 在 **Artifacts** 區域下載：
+   - `TodoDesk-Windows-Installer` - 安裝程式 (.exe)
+   - `TodoDesk-Windows-Portable` - 便攜版
+
+#### 發布正式版本
+```bash
+# 更新版本並創建標籤
+npm version patch  # 1.0.0 -> 1.0.1
+npm version minor  # 1.0.0 -> 1.1.0
+npm version major  # 1.0.0 -> 2.0.0
+
+# 推送標籤（會自動觸發構建和發布）
+git push --follow-tags
+```
+
+推送標籤後，GitHub Actions 會自動創建 Release 並附加安裝程式。
+
+詳細說明請參考 [.github/workflows/README.md](.github/workflows/README.md)
 
 ## 🛠️ 技術架構
 
